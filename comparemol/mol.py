@@ -37,11 +37,10 @@ class Mol:
         
         Atom indexes sorted in this way:
         (1) Sort by atom type;
-        (2) For the same atom type, sort by sorted distance to other atoms.
+        (2) For the same atom type, sort by the sum of distances to other atoms.
         """
-        sorted_distance = np.sort(self.distance_matrix)[:,::-1]
-        features = [x.ravel() for x in np.split(sorted_distance, sorted_distance.shape[1], axis=1)]
-        return np.lexsort((*features, self.types))
+        sum_distance = np.sum(self.distance_matrix, axis=0)
+        return np.lexsort((sum_distance, self.types))
 
     @cached_property
     def sorted_distance_matrix(self) -> np.ndarray:
@@ -50,5 +49,6 @@ class Mol:
 
     def __eq__(self, other: "Mol") -> bool:
         """Check if two molecules are equal."""
-        return (np.all(self.types[self.sorted_idx] == other.types[other.sorted_idx])
+        return (self.types.size == other.types.size
+            and np.all(self.types[self.sorted_idx] == other.types[other.sorted_idx])
             and np.allclose(self.sorted_distance_matrix, other.sorted_distance_matrix))
