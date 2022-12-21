@@ -3,6 +3,7 @@ import numpy as np
 from scipy.spatial.transform import Rotation as R
 
 from .mol import Mol
+from .config import rtol, atol
 
 
 def get_rotation(mol1: Mol, mol2: Mol) -> R:
@@ -27,7 +28,6 @@ def get_rotation(mol1: Mol, mol2: Mol) -> R:
     # align the first atom
     coord1 -= coord1[0]
     coord2 -= coord2[0]
-
     r, rmse = R.align_vectors(coord1, coord2)
-    assert np.isclose(rmse, 0.)
+    assert np.isclose(rmse, 0., rtol=rtol, atol=atol * 10)
     return r
