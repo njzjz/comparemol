@@ -5,7 +5,7 @@ from scipy.spatial.transform import Rotation as R
 from .mol import Mol
 
 
-def get_rotatation(mol1: Mol, mol2: Mol) -> R:
+def get_rotation(mol1: Mol, mol2: Mol) -> R:
     """Get rotation: mol2 -> mol1
     
     Parameters
