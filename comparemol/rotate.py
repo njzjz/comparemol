@@ -3,7 +3,7 @@ import numpy as np
 from scipy.spatial.transform import Rotation as R
 
 from .mol import Mol
-from .config import rtol, atol
+from .config import get_tol
 
 
 def get_rotation(mol1: Mol, mol2: Mol) -> R:
@@ -29,5 +29,7 @@ def get_rotation(mol1: Mol, mol2: Mol) -> R:
     coord1 -= coord1[0]
     coord2 -= coord2[0]
     r, rmse = R.align_vectors(coord1, coord2)
-    assert np.isclose(rmse, 0., rtol=rtol, atol=atol * 10)
+    rtol, atol = get_tol()
+    if not np.isclose(rmse, 0., rtol=rtol * 10, atol=atol * 10):
+        raise RuntimeError(f"Molecules not aligned. RMSE={rmse}, rtol={rtol}, atol={atol}")
     return r

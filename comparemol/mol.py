@@ -3,7 +3,7 @@ from functools import cached_property
 import numpy as np
 from numpy.typing import ArrayLike
 
-from .config import rtol, atol
+from .config import get_tol
 
 
 def close_index(a: ArrayLike):
@@ -11,6 +11,7 @@ def close_index(a: ArrayLike):
     idx = np.argsort(a)
     a = a[idx]
     diff = np.diff(a, prepend=0.)
+    rtol, atol = get_tol()
     diff_is_not_zero = ~np.isclose(diff, 0., rtol=rtol, atol=atol)
     # as[as[a]] == as^{-1}[a]
     return np.cumsum(diff_is_not_zero)[np.argsort(idx)]
@@ -65,6 +66,7 @@ class Mol:
 
     def __eq__(self, other: "Mol") -> bool:
         """Check if two molecules are equal."""
+        rtol, atol = get_tol()
         return (self.types.size == other.types.size
             and np.all(self.types[self.sorted_idx] == other.types[other.sorted_idx])
             and np.allclose(self.sorted_distance_matrix, other.sorted_distance_matrix, rtol=rtol, atol=atol))
