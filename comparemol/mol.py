@@ -7,9 +7,13 @@ from .config import rtol, atol
 
 
 def close_index(a: ArrayLike):
+    # sort and sort back
+    idx = np.argsort(a)
+    a = a[idx]
     diff = np.diff(a, prepend=0.)
     diff_is_not_zero = ~np.isclose(diff, 0., rtol=rtol, atol=atol)
-    return np.cumsum(diff_is_not_zero)
+    # as[as[a]] == as^{-1}[a]
+    return np.cumsum(diff_is_not_zero)[np.argsort(idx)]
 
 
 class Mol:
