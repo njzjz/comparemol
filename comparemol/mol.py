@@ -48,15 +48,15 @@ class Mol:
         
         Atom indexes sorted in this way:
         (1) Sort by atom type;
-        (2) For the same atom type, sort by the sum of distances to other atoms.
+        (2) For the same atom type, sort by the mean of distances to other atoms.
         (3) For the same sum of distances in tolerance, sort by sorted distance to other atoms.
         """
-        sum_distance = np.sum(self.distance_matrix, axis=0)
-        idx_sum_distance = close_index(sum_distance)
+        mean_distance = np.mean(self.distance_matrix, axis=0)
+        idx_mean_distance = close_index(mean_distance)
         sorted_distance = np.sort(self.distance_matrix)
         features = [x.ravel() for x in np.split(sorted_distance, sorted_distance.shape[1], axis=1)]
         features = [close_index(x) for x in features]
-        return np.lexsort((*features, idx_sum_distance, self.types))
+        return np.lexsort((*features, idx_mean_distance, self.types))
 
     @cached_property
     def sorted_distance_matrix(self) -> np.ndarray:
