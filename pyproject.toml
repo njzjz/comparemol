@@ -41,3 +41,19 @@ test = [
 include = ["comparemol*"]
 
 [tool.setuptools_scm]
+
+[tool.ruff]
+select = [
+    "E", # errors
+    "F", # pyflakes
+    "D", # pydocstyle
+	"I", # isort
+    "UP", # pyupgrade
+    "C4", # flake8-comprehensions
+]
+ignore = [
+    "E501", # line too long
+]
+
+[tool.ruff.pydocstyle]
+convention = "numpy"

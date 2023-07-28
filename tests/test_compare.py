@@ -1,32 +1,39 @@
+"""Test compare module."""
 from comparemol import Mol
 
+
 def test_translate():
-    mol1 = Mol([0, 0], [[0., 0., 0.], [1., 1., 1.]])
-    mol2 = Mol([0, 0], [[1., 1., 1.], [2., 2., 2.]])
+    """Test translate."""
+    mol1 = Mol([0, 0], [[0.0, 0.0, 0.0], [1.0, 1.0, 1.0]])
+    mol2 = Mol([0, 0], [[1.0, 1.0, 1.0], [2.0, 2.0, 2.0]])
     assert mol1 == mol2
 
 
 def test_rotate():
-    mol1 = Mol([0, 0], [[0., 0., 0.], [1., 1., 1.]])
-    mol2 = Mol([0, 0], [[0., 0., 0.], [1.73205081, 0., 0.]])
+    """Test rotate."""
+    mol1 = Mol([0, 0], [[0.0, 0.0, 0.0], [1.0, 1.0, 1.0]])
+    mol2 = Mol([0, 0], [[0.0, 0.0, 0.0], [1.73205081, 0.0, 0.0]])
     assert mol1 == mol2
 
 
 def test_exchange():
-    mol1 = Mol([0, 0], [[0., 0., 0.], [1., 1., 1.]])
-    mol2 = Mol([0, 0], [[1., 1., 1.], [0., 0., 0.]])
+    """Test exchange."""
+    mol1 = Mol([0, 0], [[0.0, 0.0, 0.0], [1.0, 1.0, 1.0]])
+    mol2 = Mol([0, 0], [[1.0, 1.0, 1.0], [0.0, 0.0, 0.0]])
     assert mol1 == mol2
 
 
 def test_exchange_atype():
-    mol1 = Mol([0, 0, 1], [[0., 0., 0.], [1., 1., 1.], [2., 2., 2.]])
-    mol2 = Mol([0, 1, 0], [[0., 0., 0.], [1., 1., 1.], [2., 2., 2.]])
+    """Test exchange atom type."""
+    mol1 = Mol([0, 0, 1], [[0.0, 0.0, 0.0], [1.0, 1.0, 1.0], [2.0, 2.0, 2.0]])
+    mol2 = Mol([0, 1, 0], [[0.0, 0.0, 0.0], [1.0, 1.0, 1.0], [2.0, 2.0, 2.0]])
     print(mol1.sorted_idx)
     print(mol2.sorted_idx)
     assert mol1 != mol2
 
 
 def test_not_equal():
-    mol1 = Mol([0, 0], [[0., 0., 0.], [1., 1., 1.]])
-    mol2 = Mol([0, 0], [[1., 1., 1.], [1., 2., 2.]])
+    """Test not equal."""
+    mol1 = Mol([0, 0], [[0.0, 0.0, 0.0], [1.0, 1.0, 1.0]])
+    mol2 = Mol([0, 0], [[1.0, 1.0, 1.0], [1.0, 2.0, 2.0]])
     assert mol1 != mol2
