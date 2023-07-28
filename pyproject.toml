@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "comparemol"
 dynamic = ["version"]
-description = ""
+description = "Compare if two molecules are equivalent."
 authors = [
     { name = "Jinzhe Zeng", email = "jinzhe.zeng@rutgers.edu"},
 ]
