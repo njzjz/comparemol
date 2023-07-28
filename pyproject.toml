@@ -26,7 +26,7 @@ dependencies = [
 ]
 requires-python = ">=3.8"
 readme = "README.md"
-keywords = ["dispatcher", "hpc", "slurm", "lsf", "pbs", "ssh"]
+keywords = ["compare", "molecule", "equivalent"]
 
 [project.urls]
 Homepage = "https://github.com/njzjz/comparemol"
