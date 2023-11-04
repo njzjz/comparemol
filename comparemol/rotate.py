@@ -2,13 +2,13 @@
 import numpy as np
 from scipy.spatial.transform import Rotation as R
 
-from .mol import Mol
 from .config import get_tol
+from .mol import Mol
 
 
 def get_rotation(mol1: Mol, mol2: Mol) -> R:
-    """Get rotation: mol2 -> mol1
-    
+    """Get rotation: mol2 -> mol1.
+
     Parameters
     ----------
     mol1 : Mol
@@ -30,6 +30,8 @@ def get_rotation(mol1: Mol, mol2: Mol) -> R:
     coord2 -= coord2[0]
     r, rmse = R.align_vectors(coord1, coord2)
     rtol, atol = get_tol()
-    if not np.isclose(rmse, 0., rtol=rtol * 10, atol=atol * 10):
-        raise RuntimeError(f"Molecules not aligned. RMSE={rmse}, rtol={rtol}, atol={atol}")
+    if not np.isclose(rmse, 0.0, rtol=rtol * 10, atol=atol * 10):
+        raise RuntimeError(
+            f"Molecules not aligned. RMSE={rmse}, rtol={rtol}, atol={atol}"
+        )
     return r

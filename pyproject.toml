@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "comparemol"
 dynamic = ["version"]
-description = ""
+description = "Compare if two molecules are equivalent."
 authors = [
     { name = "Jinzhe Zeng", email = "jinzhe.zeng@rutgers.edu"},
 ]
@@ -26,7 +26,7 @@ dependencies = [
 ]
 requires-python = ">=3.8"
 readme = "README.md"
-keywords = ["dispatcher", "hpc", "slurm", "lsf", "pbs", "ssh"]
+keywords = ["compare", "molecule", "equivalent"]
 
 [project.urls]
 Homepage = "https://github.com/njzjz/comparemol"
@@ -41,3 +41,19 @@ test = [
 include = ["comparemol*"]
 
 [tool.setuptools_scm]
+
+[tool.ruff]
+select = [
+    "E", # errors
+    "F", # pyflakes
+    "D", # pydocstyle
+	"I", # isort
+    "UP", # pyupgrade
+    "C4", # flake8-comprehensions
+]
+ignore = [
+    "E501", # line too long
+]
+
+[tool.ruff.pydocstyle]
+convention = "numpy"
