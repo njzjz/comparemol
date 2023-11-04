@@ -35,6 +35,7 @@ repository = "https://github.com/njzjz/comparemol"
 [project.optional-dependencies]
 test = [
     'pytest',
+    'dpdata',
 ]
 
 [tool.setuptools.packages.find]

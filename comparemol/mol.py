@@ -1,10 +1,14 @@
 """Molecule class."""
 from functools import cached_property
+from typing import TYPE_CHECKING
 
 import numpy as np
 from numpy.typing import ArrayLike
 
 from .config import get_tol
+
+if TYPE_CHECKING:
+    import dpdata
 
 
 def close_index(a: ArrayLike) -> ArrayLike:
@@ -95,4 +99,25 @@ class Mol:
                 rtol=rtol,
                 atol=atol,
             )
+        )
+
+    @classmethod
+    def load_from_dpdata(cls, system: "dpdata.System") -> "Mol":
+        """Load from dpdata System.
+
+        Only the first frame is used.
+
+        Parameters
+        ----------
+        system : dpdata.System
+            dpdata system
+
+        Returns
+        -------
+        Mol
+            molecule
+        """
+        return Mol(
+            np.array(system.data["atom_names"])[system.data["atom_types"]],
+            system.data["coords"][0],
         )
