@@ -113,4 +113,4 @@ class Mol:
         Mol
             molecule
         """
-        return Mol(system.data["atom_names"](system.data['atom_types']), system.data['coords'][0])
+        return Mol(np.array(system.data["atom_names"])(system.data['atom_types']), system.data['coords'][0])
