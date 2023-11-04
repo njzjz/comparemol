@@ -6,6 +6,10 @@ from numpy.typing import ArrayLike
 
 from .config import get_tol
 
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    import dpdata
+
 
 def close_index(a: ArrayLike) -> ArrayLike:
     """Get the index of the sorted array.
