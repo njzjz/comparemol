@@ -102,15 +102,18 @@ class Mol:
         """Load from dpdata System.
 
         Only the first frame is used.
-        
+
         Parameters
         ----------
-        system: dpdata.System
+        system : dpdata.System
             dpdata system
-        
+
         Returns
         -------
         Mol
             molecule
         """
-        return Mol(np.array(system.data["atom_names"])[system.data['atom_types']], system.data['coords'][0])
+        return Mol(
+            np.array(system.data["atom_names"])[system.data["atom_types"]],
+            system.data["coords"][0],
+        )
