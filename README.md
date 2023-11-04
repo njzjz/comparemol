@@ -38,3 +38,15 @@ r = get_rotation(mol1, mol2)
 force2 = [[1.73205081, 0.0, 0.0]]
 force1 = r.apply(force2)
 ```
+
+### Load from a dpdata System
+
+Load a molecule from a [dpdata](https://github.com/deepmodeling/dpdata) System:
+
+```py
+from comparemol import Mol
+# system: dpdata.System
+mol = Mol.load_from_dpdata(system)
+```
+
+Note that only the first frame is loaded.
