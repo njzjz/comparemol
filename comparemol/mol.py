@@ -1,12 +1,12 @@
 """Molecule class."""
 from functools import cached_property
+from typing import TYPE_CHECKING
 
 import numpy as np
 from numpy.typing import ArrayLike
 
 from .config import get_tol
 
-from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     import dpdata
 
