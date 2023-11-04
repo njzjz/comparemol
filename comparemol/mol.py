@@ -96,3 +96,21 @@ class Mol:
                 atol=atol,
             )
         )
+
+    @classmethod
+    def load_from_dpdata(cls, system: "dpdata.System") -> "Mol":
+        """Load from dpdata System.
+
+        Only the first frame is used.
+        
+        Parameters
+        ----------
+        system: dpdata.System
+            dpdata system
+        
+        Returns
+        -------
+        Mol
+            molecule
+        """
+        return Mol(system.data["atom_names"](system.data['atom_types']), system.data['coords'][0])
