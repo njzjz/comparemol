@@ -1,4 +1,5 @@
 """Test load from external packages."""
+
 import dpdata
 import numpy as np
 

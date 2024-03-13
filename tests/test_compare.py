@@ -1,4 +1,5 @@
 """Test compare module."""
+
 from comparemol import Mol
 
 

@@ -1,4 +1,5 @@
 """Compare whether two molecules are equivalent."""
+
 from .config import set_tol
 from .mol import Mol
 from .rotate import get_rotation

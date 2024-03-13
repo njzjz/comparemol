@@ -1,4 +1,5 @@
 """Test rotation."""
+
 import numpy as np
 
 from comparemol import Mol, get_rotation

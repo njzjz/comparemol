@@ -1,4 +1,5 @@
 """Configurations for tolerances."""
+
 from typing import Tuple
 
 rtol = 1e-4
