@@ -7,7 +7,7 @@ name = "comparemol"
 dynamic = ["version"]
 description = "Compare if two molecules are equivalent."
 authors = [
-    { name = "Jinzhe Zeng", email = "jinzhe.zeng@rutgers.edu"},
+    { name = "Jinzhe Zeng", email = "jinzhe.zeng@ustc.edu.cn"},
 ]
 license = { file = "LICENSE" }
 classifiers = [
