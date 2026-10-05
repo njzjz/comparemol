@@ -16,6 +16,7 @@ pip install comparemol
 
 ```py
 from comparemol import Mol
+
 # define types and coordinates
 types1 = [0, 0]
 types2 = [0, 0]
@@ -32,6 +33,7 @@ assert mol1 == mol2
 
 ```py
 from comparemol import get_rotation
+
 # define rotation: mol2 -> mol1
 r = get_rotation(mol1, mol2)
 # rotate forces
@@ -45,6 +47,7 @@ Load a molecule from a [dpdata](https://github.com/deepmodeling/dpdata) System:
 
 ```py
 from comparemol import Mol
+
 # system: dpdata.System
 mol = Mol.load_from_dpdata(system)
 ```
